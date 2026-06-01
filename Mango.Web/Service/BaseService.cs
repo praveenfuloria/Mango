@@ -57,5 +57,6 @@ namespace Mango.Web.Service
                 };
                 return responceDto;
             }
+        }
     }
 }
