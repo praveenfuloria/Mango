@@ -7,5 +7,7 @@ namespace Mango.Services.AuthAPI.Service.Iservice
         Task<string> RegisterAsync(RegistrationRequestDto registrationRequestDto);
 
         Task<LoginResponseDto> LoginAsync(LoginRequestDto loginRequestDto);
+
+        Task<bool> AssignRole(string email, string roleName);
     }
 }

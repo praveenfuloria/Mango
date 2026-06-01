@@ -21,6 +21,8 @@ namespace Mango.Services.CouponApi
             {
                 option.UseSqlServer(builder.Configuration.GetConnectionString("CouponConnectionString"));
             });
+
+           // builder.Services.AddAutoMapper(cfg => { }, typeof(MappingConfig));
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
             var app = builder.Build();
@@ -38,7 +40,7 @@ namespace Mango.Services.CouponApi
 
 
             app.MapControllers();
-           // ApplyMigration();
+            ApplyMigration();
             app.Run();
 
             void ApplyMigration()

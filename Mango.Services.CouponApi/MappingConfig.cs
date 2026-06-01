@@ -5,15 +5,19 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Mango.Services.CouponApi
 {
-    public class MappingConfig
+    public class MappingConfig :Profile
     {
-        public static MapperConfiguration RegisterMaps()
+        public MappingConfig()
         {
-            var mapperConfig = new MapperConfiguration(config =>
-            {
-                config.CreateMap<Coupon, CouponDto>().ReverseMap();
-            }, new NullLoggerFactory());
-            return mapperConfig;
+            CreateMap<Coupon, CouponDto>().ReverseMap();
         }
+        //public static MapperConfiguration RegisterMaps()
+        //{
+        //    var mapperConfig = new MapperConfiguration(config =>
+        //    {
+        //        config.CreateMap<Coupon, CouponDto>().ReverseMap();
+        //    }, new NullLoggerFactory());
+        //    return mapperConfig;
+        //}
     }
 }

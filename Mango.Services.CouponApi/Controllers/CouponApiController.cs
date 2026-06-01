@@ -32,7 +32,7 @@ namespace Mango.Services.CouponApi.Controllers
                 //Get Data using Domain Model
                 IEnumerable<Coupon> CouponsDomain = dbContext.Coupons.ToList();
                 //Map Domain Model to DTO
-                var Coupondto = mapper.Map<CouponDto>(CouponsDomain);
+                var Coupondto = mapper.Map<List<CouponDto>>(CouponsDomain);
                 //Return DTO as responce
                 _responceDto.Result = Coupondto;
             }

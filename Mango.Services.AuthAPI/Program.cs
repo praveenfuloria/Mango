@@ -25,6 +25,8 @@ namespace Mango.Services.AuthAPI
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            builder.Services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+
             builder.Services.AddScoped<IAuthService, AuthService>();
 
             builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("ApiSettings:JwtOptions"));
@@ -49,7 +51,7 @@ namespace Mango.Services.AuthAPI
 
 
             app.MapControllers();
-            //ApplyMigration();
+            ApplyMigration();
             app.Run();
             void ApplyMigration()
             {
