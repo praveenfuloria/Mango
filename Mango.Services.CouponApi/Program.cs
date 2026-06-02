@@ -1,6 +1,12 @@
 
 using Mango.Services.CouponApi.Data;
+using Mango.Services.CouponApi.Extension;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Mango.Services.CouponApi
 {
@@ -25,6 +31,9 @@ namespace Mango.Services.CouponApi
            // builder.Services.AddAutoMapper(cfg => { }, typeof(MappingConfig));
             builder.Services.AddAutoMapper(typeof(MappingConfig));
 
+            
+            builder.AddAppAuthetication();
+            builder.Services.AddAuthorization();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -35,12 +44,12 @@ namespace Mango.Services.CouponApi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
 
             app.MapControllers();
-            ApplyMigration();
+            //ApplyMigration();
             app.Run();
 
             void ApplyMigration()
