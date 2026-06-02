@@ -8,16 +8,16 @@ namespace Mango.Web.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly IProductService ProductService;
+        private readonly IProductService productService;
 
         public ProductController(IProductService ProductService)
         {
-            this.ProductService = ProductService;
+            this.productService = ProductService;
         }
         public async Task<IActionResult> ProductIndex()
         {
             List<ProductDto>? list = null;
-            ResponceDto? ProductDto = await ProductService.GetAllProductsAsync();
+            ResponceDto? ProductDto = await productService.GetAllProductsAsync();
             if(ProductDto != null && ProductDto.isSuccess)
             {
                 list = JsonConvert.DeserializeObject<List<ProductDto>>(Convert.ToString(ProductDto.Result));
@@ -36,7 +36,7 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ResponceDto? response = await ProductService.CreateProductsAsync(model);
+                ResponceDto? response = await productService.CreateProductsAsync(model);
 
                 if (response != null && response.isSuccess)
                 {
@@ -53,7 +53,7 @@ namespace Mango.Web.Controllers
 
         public async Task<IActionResult> ProductDelete(int ProductId)
         {
-            ResponceDto? response = await ProductService.GetProductByIdAsync(ProductId);
+            ResponceDto? response = await productService.GetProductByIdAsync(ProductId);
 
             if (response != null && response.isSuccess)
             {
@@ -70,7 +70,7 @@ namespace Mango.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> ProductDelete(ProductDto ProductDto)
         {
-            ResponceDto? response = await ProductService.DeleteProductsAsync(ProductDto.ProductId);
+            ResponceDto? response = await productService.DeleteProductsAsync(ProductDto.ProductId);
 
             if (response != null && response.isSuccess)
             {
@@ -86,7 +86,7 @@ namespace Mango.Web.Controllers
 
         public async Task<IActionResult> ProductEdit(int productId)
         {
-            ResponceDto? response = await ProductService.GetProductByIdAsync(productId);
+            ResponceDto? response = await productService.GetProductByIdAsync(productId);
 
             if (response != null && response.isSuccess)
             {
@@ -105,7 +105,7 @@ namespace Mango.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                ResponceDto? response = await ProductService.UpdateProductsAsync(productDto);
+                ResponceDto? response = await productService.UpdateProductsAsync(productDto);
 
                 if (response != null && response.isSuccess)
                 {
