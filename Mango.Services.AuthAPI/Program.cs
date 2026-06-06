@@ -51,7 +51,7 @@ namespace Mango.Services.AuthAPI
 
 
             app.MapControllers();
-            //ApplyMigration();
+            ApplyMigration();
             app.Run();
             void ApplyMigration()
             {

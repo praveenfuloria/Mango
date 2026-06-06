@@ -43,7 +43,7 @@ namespace Mango.Services.ProductAPI
 
 
             app.MapControllers();
-            //ApplyMigration();
+            ApplyMigration();
 
             app.Run();
             void ApplyMigration()

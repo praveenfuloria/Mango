@@ -49,7 +49,7 @@ namespace Mango.Services.CouponApi
 
 
             app.MapControllers();
-            //ApplyMigration();
+            ApplyMigration();
             app.Run();
 
             void ApplyMigration()

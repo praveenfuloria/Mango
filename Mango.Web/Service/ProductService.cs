@@ -29,7 +29,7 @@ namespace Mango.Web.Service
             {
                 ApiType = SD.ApiType.DELETE,
                 Url = SD.ProductAPIBase + "/api/product/" + id
-            });
+            }, false);
         }
 
         public async Task<ResponceDto?> GetAllProductsAsync()
